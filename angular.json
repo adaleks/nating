@@ -1,0 +1,178 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "nating-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "nk",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/nating-app",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/@progress/kendo-theme-material/dist/all.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "allowedCommonJsDependencies": ["date-fns-tz"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "nating-app:build:production"
+            },
+            "development": {
+              "browserTarget": "nating-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "nating-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/@progress/kendo-theme-material/dist/all.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "nating-kendo": {
+      "projectType": "library",
+      "root": "projects/nating-kendo",
+      "sourceRoot": "projects/nating-kendo/src",
+      "prefix": "nk",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/nating-kendo/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/nating-kendo/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/nating-kendo/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/nating-kendo/src/test.ts",
+            "tsConfig": "projects/nating-kendo/tsconfig.spec.json",
+            "karmaConfig": "projects/nating-kendo/karma.conf.js"
+          }
+        }
+      }
+    },
+    "nating": {
+      "projectType": "library",
+      "root": "projects/nating",
+      "sourceRoot": "projects/nating/src",
+      "prefix": "n",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/nating/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/nating/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/nating/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/nating/src/test.ts",
+            "tsConfig": "projects/nating/tsconfig.spec.json",
+            "karmaConfig": "projects/nating/karma.conf.js"
+          }
+        }
+      }
+    }
+  }
+}

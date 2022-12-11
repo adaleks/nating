@@ -1,0 +1,33 @@
+<div class="nk-date-filter">
+    <form [formGroup]="dateFilterForm">
+        <n-toolbar>
+            <div class="nk-date-filter-toolbar-actions-holder">
+                <kendo-buttongroup selection="single">
+                    <button kendoButton
+                            *ngFor="let button of buttons"
+                            fillMode="flat"
+                            [toggleable]="true"
+                            [title]="button.text | translate"
+                            (selectedChange)="onSelectedChange($event, button)"
+                            [selected]="button.selected"
+                            (click)="onButtonClick($event, button)">
+                        {{button.text | translate}}
+                    </button>
+                </kendo-buttongroup>
+            </div>
+            <div class="nk-date-filter-toolbar-spacer-toogle"
+                 (click)="onSpacerClick($event)"></div>
+            <div class="nk-date-filter-toolbar-actions-holder">
+                <nk-date-filter-toolbar-preview *ngIf="isPreviewVisible"
+                                                [value]="value"></nk-date-filter-toolbar-preview>
+                <nk-date-filter-toolbar-actions></nk-date-filter-toolbar-actions>
+            </div>
+        </n-toolbar>
+        <nk-date-filter-content [minYear]="minYear"
+                                [maxYear]="maxYear"
+                                [tagFilters]="tagFilters"
+                                [value]="value"
+                                [form]="dateFilterForm">
+        </nk-date-filter-content>
+    </form>
+</div>

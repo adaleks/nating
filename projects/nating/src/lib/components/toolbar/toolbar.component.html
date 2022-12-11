@@ -1,0 +1,11 @@
+<div class="n-toolbar">
+  <div class="n-toolbar-content">
+    <ng-content></ng-content>
+  </div>
+  <div class="n-toolbar-actions">
+    <ng-container *ngIf="!actionsTemplate">
+
+    </ng-container>
+    <ng-container *ngTemplateOutlet="actionsTemplate; context: {}"></ng-container>
+  </div>
+</div>

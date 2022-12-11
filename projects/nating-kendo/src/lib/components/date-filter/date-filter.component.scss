@@ -1,0 +1,18 @@
+.nk-date-filter {
+  .n-toolbar-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .nk-date-filter-toolbar-actions-holder {
+      display: flex;
+      align-items: center;
+      kendo-buttongroup {
+        gap: 4px;
+      }
+    }
+    .nk-date-filter-toolbar-spacer-toogle {
+      flex-grow: 4;
+      cursor: pointer;
+    }
+  }
+}

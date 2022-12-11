@@ -1,0 +1,52 @@
+.nk-date-filter-content {
+  border-color: rgba(0, 0, 0, 0.08);
+  margin: 0;
+  border-width: 1px;
+  border-style: solid;
+  box-sizing: border-box;
+  outline: 0;
+  font-family: inherit;
+  list-style: none;
+  position: relative;
+  overflow: hidden;
+  border-top: none;
+  background-color: white;
+
+  .nk-date-filter-content-definition {
+    padding: 1rem var(--bs-gutter-x, 0.75rem);
+    height: 100%;
+
+    .nk-date-filter-content-definition-control {
+      display: flex;
+      flex-direction: row;
+      > label {
+        flex-grow: 1;
+        width: auto;
+      }
+    }
+
+    .nk-date-filter-content-tag-filters {
+      button {
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  .nk-date-filter-content-preview {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.08);
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    padding: 1rem var(--bs-gutter-x, 0.75rem);
+    height: 100%;
+
+    > div {
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

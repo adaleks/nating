@@ -1,0 +1,152 @@
+<div class="nk-date-filter-content"
+     *ngIf="isExpanded"
+     [formGroup]="form">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="nk-date-filter-content-definition">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="nk-date-filter-content-definition-control">
+                            <label class="me-1">
+                                <span *ngIf="value?.type === 'day'">
+                                    {{'G_DATE' | translate}}*
+                                </span>
+                                <span *ngIf="value?.type === 'period'">
+                                    {{'G_FROM' | translate}}*
+                                </span>
+                                <span *ngIf="value?.type === 'week' || value?.type === 'month' || value?.type === 'quarter'|| value?.type === 'year'">
+                                    {{'G_YEAR' | translate}}*
+                                </span>
+                                <kendo-datepicker formControlName="from"
+                                                  [format]="value?.type === 'period' ? 'g' : 'd'"
+                                                  *ngIf="value?.type === 'day'">
+                                </kendo-datepicker>
+                                <kendo-datetimepicker formControlName="from"
+                                                      [format]="value?.type === 'period' ? 'g' : 'd'"
+                                                      *ngIf="value?.type === 'period'">
+                                </kendo-datetimepicker>
+                                <kendo-dropdownlist *ngIf="value?.type === 'week' || value?.type === 'month' || value?.type === 'quarter'|| value?.type === 'year'"
+                                                    [data]="listYears"
+                                                    formControlName="year"> </kendo-dropdownlist>
+                            </label>
+                            <span class="align-middle me-1">
+                                <div>&nbsp;</div>
+                                <button kendoButton
+                                        (click)="decreaseLeftDate()"
+                                        fillMode="flat">
+                                    &nbsp;
+                                    <i class="icon icon-arrow-left3"></i>
+                                    &nbsp;
+                                </button>
+                            </span>
+                            <span class="align-middle">
+                                <div>&nbsp;</div>
+                                <button kendoButton
+                                        (click)="increaseLeftDate()"
+                                        fillMode="flat">
+                                    &nbsp;
+                                    <i class="icon icon-arrow-right3"></i>
+                                    &nbsp;
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div *ngIf="value?.type === 'day'">&nbsp;</div>
+                        <span class="align-middle nk-date-filter-content-tag-filters"
+                              *ngIf="value?.type === 'day'">
+                            <button kendoButton
+                                    fillMode="link"
+                                    *ngFor="let fTag of listTagFilters"
+                                    (click)="onTagClick(fTag)"
+                                    [primary]="true">{{fTag.text | translate}}</button>
+                        </span>
+                        <div class="nk-date-filter-content-definition-control">
+                            <label class="me-1">
+                                <span *ngIf="value?.type === 'period'">
+                                    {{'G_TO' | translate}}*
+                                </span>
+                                <span *ngIf="value?.type === 'week'">
+                                    {{'G_WEEK' | translate}}*
+                                </span>
+                                <span *ngIf="value?.type === 'month'">
+                                    {{'G_MONTH' | translate}}*
+                                </span>
+                                <span *ngIf="value?.type === 'quarter'">
+                                    {{'G_QUARTER' | translate}}*
+                                </span>
+                                <!-- <kendo-datepicker formControlName="to"
+                                                  [format]="value?.type === 'period' ? 'g' : 'd'"
+                                                  *ngIf="value?.type === 'period'"></kendo-datepicker> -->
+                                <kendo-datetimepicker formControlName="to"
+                                                      [format]="value?.type === 'period' ? 'g' : 'd'"
+                                                      *ngIf="value?.type === 'period'"></kendo-datetimepicker>
+                                <kendo-dropdownlist *ngIf="value?.type === 'week'"
+                                                    formControlName="week"
+                                                    [data]="listWeeks"> </kendo-dropdownlist>
+                                <kendo-dropdownlist *ngIf="value?.type === 'month'"
+                                                    formControlName="month"
+                                                    [data]="listMonths"> </kendo-dropdownlist>
+                                <kendo-dropdownlist *ngIf="value?.type === 'quarter'"
+                                                    formControlName="quarter"
+                                                    [data]="listQuarters"> </kendo-dropdownlist>
+                            </label>
+                            <span class="align-middle me-1"
+                                  *ngIf="value?.type !== 'day' && value?.type !== 'year'">
+                                <div>&nbsp;</div>
+                                <button kendoButton
+                                        (click)="decreaseRightDate()"
+                                        fillMode="flat">
+                                    &nbsp;
+                                    <i class="icon icon-arrow-left3"></i>
+                                    &nbsp;
+                                </button>
+                            </span>
+                            <span class="align-middle"
+                                  *ngIf="value?.type !== 'day' && value?.type !== 'year'">
+                                <div>&nbsp;</div>
+                                <button kendoButton
+                                        (click)="increaseRightDate()"
+                                        fillMode="flat">
+                                    &nbsp;
+                                    <i class="icon icon-arrow-right3"></i>
+                                    &nbsp;
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="nk-date-filter-content-preview">
+                <div class="row">
+                    <div class="col-4">
+                        <strong>
+                            From
+                        </strong>
+                    </div>
+                    <div class="col-8 text-end">{{ value?.from | kendoDate:'g' }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <strong>
+                            To
+                        </strong>
+                    </div>
+                    <div class="col-8 text-end">{{ value?.to | kendoDate:'g' }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-4">&nbsp;</div>
+                    <div class="col-8 text-end">
+                        <strong>
+                            {{value?.timezone}}
+                        </strong>
+                        <input type="hidden"
+                               formControlName="timezone">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+{
+  "G_DAY": "Day",
+  "G_WEEK": "Week",
+  "G_MONTH": "Month",
+  "G_QUARTER": "Quarter",
+  "G_YEAR": "Year",
+  "G_PERIOD": "Period",
+  "G_DATE": "Date",
+  "G_FROM": "From",
+  "G_TO": "To",
+  "G_TODAY": "Today",
+  "G_YESTERDAY": "Yesterday",
+  "G_LAST_7_DAYS": "Last 7 Days",
+  "G_LAST_30_DAYS": "Last 30 Days",
+  "G_LAST_MONTH": "Last Month",
+  "G_THIS_WEEK": "This Week",
+  "G_THIS_MONTH": "This Month"
+}

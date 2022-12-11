@@ -1,0 +1,11 @@
+<nk-date-filter [(ngModel)]="dateFilter"
+                (ngModelChange)="onDateFilterChange($event)"
+                [tagFilters]="tagFilters"
+                [minYear]="minYear"
+                [maxYear]="maxYear"
+                (onToggle)="onDateFilterToggle($event)">
+</nk-date-filter>
+<br><br>
+<pre style="background-color: rgb(255, 244, 206); padding: 10px;">
+{{dateFilter | json}}
+</pre>
