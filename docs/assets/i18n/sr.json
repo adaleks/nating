@@ -1,0 +1,18 @@
+{
+  "G_DAY": "Dan",
+  "G_WEEK": "Sedmica",
+  "G_MONTH": "Mesec",
+  "G_QUARTER": "Kvartal",
+  "G_YEAR": "Godina",
+  "G_PERIOD": "Period",
+  "G_DATE": "Datum",
+  "G_FROM": "Od",
+  "G_TO": "Do",
+  "G_TODAY": "Danas",
+  "G_YESTERDAY": "Juče",
+  "G_LAST_7_DAYS": "Prethodnih 7 Dana",
+  "G_LAST_30_DAYS": "Prethodnih 30 Dana",
+  "G_LAST_MONTH": "Prethodni Mesec",
+  "G_THIS_WEEK": "Ova Nedelja",
+  "G_THIS_MONTH": "Ovaj Mesec"
+}

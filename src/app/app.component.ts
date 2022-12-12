@@ -21,7 +21,7 @@ export class AppComponent {
     from: new Date().toISOString(),
     to: new Date().toISOString(),
     type: 'day',
-    timezone: 'America/Los_Angeles',
+    // timezone: 'America/Los_Angeles',
     // timezone: 'America/Toronto',
     // timezone: 'America/New_York',
     // timezone: 'Asia/Yakutsk',
