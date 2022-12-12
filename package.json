@@ -4,7 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build nating-app",
+    "build:nating": "ng build nating",
+    "build:nating-kendo": "ng build nating-kendo",
+    "build-all": "npm run build:nating && npm run build:nating-kendo && npm run build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "clean": "rimraf dist",
