@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateLoader } from '@ngx-translate/core';
 import { forkJoin, Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 
 export class AppTranslationLoader implements TranslateLoader {
   constructor(
@@ -13,12 +12,7 @@ export class AppTranslationLoader implements TranslateLoader {
 
   getTranslation(lang: string): Observable<any> {
     // load app translations
-    let appTranslations = this.http.get<any>(`./assets/i18n/${lang}.json`);
-    if (environment.githubPagesProject) {
-      appTranslations = this.http.get<any>(
-        `./${environment.githubPagesProject}/assets/i18n/${lang}.json`
-      );
-    }
+    const appTranslations = this.http.get<any>(`./assets/i18n/${lang}.json`);
     // load app translations
     // const kendoTranslations = this.http.get<any>(
     //   `/v2/assets/translations/kendo/${lang}.json`
