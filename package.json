@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build nating-app",
-    "build:nating": "ng build nating",
-    "build:nating-kendo": "ng build nating-kendo",
+    "build": "ng build nating-app --configuration=production",
+    "build:docs": "npm run build:nating && npm run build:nating-kendo && ng build nating-app --configuration=production --base-href=/nating/",
+    "build:nating": "ng build nating --configuration=production",
+    "build:nating-kendo": "ng build nating-kendo --configuration=production",
     "build-all": "npm run build:nating && npm run build:nating-kendo && npm run build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
